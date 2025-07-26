@@ -7,7 +7,7 @@ const Body = () => {
   return (
     <>
         <Navbar />
-        <Outlet />     // Space for children routes 
+        <Outlet />     
         <Footer />
     </>
   )
