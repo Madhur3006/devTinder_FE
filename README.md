@@ -11,3 +11,12 @@
 -> install npm i react-router-dom
   -> BrowserRouter -> Routes -> Route (path, element)
   -> use outlet for render children routes 
+
+-> create Login page 
+-> npm i axios 
+-> npm changes to BE repo for handling cors and pass withCredentials: true in axios 
+
+-> npm install @reduxjs/toolkit react-redux
+  --> configiureStore -> provider -> create Slice -> provide reducer 
+  --> useDispatch() for dispatching actions
+  --> useSelector() for subscribing store 
