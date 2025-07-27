@@ -2,13 +2,16 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../utills/constants'
 import ConnectionCard from './ConnectionCard'
+import { useDispatch, useSelector } from 'react-redux'
+import { addConnections } from '../utills/connectionsSlice'
 
 const Connections = () => {
-    const [connections, setConnections] = useState(null)
+    const connections = useSelector((store) => store.connections)
+    const dispatch = useDispatch()
     const fetchConnections = async () => {
         try {
             const res = await axios.get(BASE_URL+'/user/connections', {withCredentials: true})
-            setConnections(res?.data?.data)
+            dispatch(addConnections(res?.data?.data))
         } catch (error) {
             console.log(error)
         }
