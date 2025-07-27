@@ -46,6 +46,12 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-5 w-52 p-2 shadow"
             >
               <li>
+                <Link to='/connections'><div className="justify-between">Connections</div></Link>
+              </li>
+              <li>
+                <Link to='/requests'><div className="justify-between">Requests</div></Link>
+              </li>
+              <li>
                 <Link to='/profile'><div className="justify-between">Profile</div></Link>
               </li>
               <li>

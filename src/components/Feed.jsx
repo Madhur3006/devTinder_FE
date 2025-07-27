@@ -22,10 +22,11 @@ const Feed = () => {
     getFeed()
   }, [])
 
-  if (feed==null) return ;
+  if (!feed) return ;
+  if(feed.length===0) return(<h1 className='flex justify-center my-5'>You have explored all user</h1>)
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex flex-col items-center'>
       {/* <div><UserCard user={feed.data[0]}/></div>      */}
       {feed.data.map((user) => <div key={user._id}><UserCard user={user}/></div>)}
     </div>
