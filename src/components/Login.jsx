@@ -27,8 +27,8 @@ const Login = () => {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="flex justify-center my-10">
+      <div className="card bg-base-50 w-96">
         <div className="card-body">
           <label className="input my-2">
             <input type="text" placeholder="Email Id" value = {emailId} onChange={(e) => {setEmailId(e.target.value)}} />
@@ -37,7 +37,7 @@ const Login = () => {
             <input type="text" placeholder="Password" value = {password} onChange={(e) => {setPassword(e.target.value)}}/>
           </label>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary" onClick={() => handleLogin()}>Login</button>
+            <button className="btn btn-primary" onClick={handleLogin}>Login</button>
           </div>
         </div>
       </div>
