@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utills/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { BASE_URL } from "../utills/constants";
 
 const Login = () => {
@@ -11,9 +11,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // console.log(emailId)
-  // console.log(password)
 
   async function handleLogin() {
     try {
@@ -36,7 +33,7 @@ const Login = () => {
   //   if(emailId=='' && password=='') {
   //     return true
   //   }
-  //   return false 
+  //   return false
   // }
   return (
     <div className="flex justify-center my-10">
@@ -64,10 +61,16 @@ const Login = () => {
           </label>
           <p>{error}</p>
 
-          <div className="card-actions justify-center">
-            <button /*disabled= {isLoginDisabled()}*/className="btn btn-primary" onClick={handleLogin}>
+          <div className="flex flex-col items-center gap-4">
+            <button
+              /*disabled= {isLoginDisabled()}*/ className="btn btn-primary"
+              onClick={handleLogin}
+            >
               Login
             </button>
+            <Link to="/signup" className="text-blue-600 hover:text-blue-800">
+              <p>New User? Click to signup</p>
+            </Link>
           </div>
         </div>
       </div>
