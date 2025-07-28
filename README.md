@@ -21,7 +21,25 @@
   --> useDispatch() for dispatching actions
   --> useSelector() for subscribing store 
 
-Todo: 
-1) add url's to database 
-2) make user card 
-3) create edit profile page 
+-> AWS Deployment 
+--> sign in 
+--> launch an instance
+----->provide name, os , create key pair 
+----> chmod 400 "devTinder-secret.pem" (for securing key pair secret file)
+-->  connect to instance
+----> ssh -i "devTinder-secret.pem" ubuntu@ec2-13-60-65-86.eu-north-1.compute.amazonaws.com
+--> install nvm 
+----> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+--> install node (version same to localhost machine)
+--> npm install 22
+--> clone git repo using https link (FE+BE)
+----> git clone <repo link>
+Frontend
+--> npm install
+--> npm run build 
+--> sudo apt update (updating ubuntu dependencies)
+--> sudo apt install nginx (nginx helps to host application)
+--> sudo systemctl start nginx 
+--> sudo systemctl enable nginx
+--> sudo scp -r dist/* /var/www/html/ (copying code files to server)
+--> enable port 80 under security groups in aws console
