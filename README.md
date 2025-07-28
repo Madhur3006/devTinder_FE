@@ -86,7 +86,15 @@ Modify the BASE_URL in constants to /api
 
 ----------------------------------------------------------------------
 
-** everytime you git pull for new FE changes 
+** everytime for new FE changes 
+-> cd <FE Repo>
 -> git pull
+-> npm run build
 -> sudo scp -r dist/* /var/www/html/ 
+
+** everytime you new BE changes 
+-> cd <BE Repo>
+-> pm2 stop npm 
+-> git pull 
+-> pm2 start npm -- start
 
