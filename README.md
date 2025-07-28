@@ -22,6 +22,8 @@
 --> useDispatch() for dispatching actions
 --> useSelector() for subscribing store
 
+
+--------------------------------------------------------------------------------
 -> AWS Deployment
 --> sign in
 --> launch an instance
@@ -80,4 +82,11 @@ now:
 FE-> http://13.60.65.86
 BE-> http://13.60.65.86/api 
 
-Modify the BASE_URL in constanta to /api
+Modify the BASE_URL in constants to /api 
+
+----------------------------------------------------------------------
+
+** everytime you git pull for new FE changes 
+-> git pull
+-> sudo scp -r dist/* /var/www/html/ 
+
