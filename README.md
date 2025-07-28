@@ -20,3 +20,8 @@
   --> configiureStore -> provider -> create Slice -> provide reducer 
   --> useDispatch() for dispatching actions
   --> useSelector() for subscribing store 
+
+Todo: 
+1) add url's to database 
+2) make user card 
+3) create edit profile page 
