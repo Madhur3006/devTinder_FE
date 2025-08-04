@@ -98,3 +98,8 @@ Modify the BASE_URL in constants to /api
 -> git pull 
 -> pm2 start npm -- start
 
+--------------------------------------------------------------------
+chat feature 
+
+-> npm i socket.io-client
+
