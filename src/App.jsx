@@ -25,7 +25,7 @@ function App() {
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/chat/:userId" element = {<ChatBox />}  />
+              <Route path="/chat/:toUserId" element = {<ChatBox />}  />
             </Route>
           </Routes>
         </BrowserRouter>
