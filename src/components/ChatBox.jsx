@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, resolvePath } from "react-router-dom";
 import { createSocketConnection } from "../utills/socket";
+import axios from "axios";
+import { BASE_URL } from "../utills/constants";
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
@@ -15,7 +17,29 @@ const ChatBox = () => {
   );
   const fromUserId = user?.info?._id;
   const firstName = user?.info?.firstName
-  console.log(firstName);
+
+  const fetchMessages = async () => {
+    try {
+      const res = await axios.get(BASE_URL+ "/chat/"+ toUserId, {withCredentials: true})
+      console.log(res.data.messages)
+
+      const chatMessages = res?.data?.messages.map((message) => {
+        return {
+          firstName: message.senderId.firstName,
+          text: message.text
+        }
+      })
+
+      setMessages(chatMessages);
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchMessages()
+  }, [])
 
   useEffect(() => {
     const socket = createSocketConnection();
