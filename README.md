@@ -103,3 +103,23 @@ chat feature
 
 -> npm i socket.io-client
 
+--------------------------------------------------------------------
+
+
+Bugs: 
+1) Signup 
+-> password validator details
+-> password encryption UI (*****)
+-> sign up button and succes msg 
+
+2) Feed
+-> Crousel kind of effect 
+-> Profile image 
+
+3) Connections Page
+-> Connection data 
+
+4) Profile
+-> User card section aside
+
+

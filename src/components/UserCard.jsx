@@ -3,6 +3,7 @@ import React from "react";
 import { BASE_URL } from "../utills/constants";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utills/feedSlice";
+import defaultProfilePhoto from "../assets/pexels-andrewperformance1-697509.jpg";
 
 const UserCard = ({user}) => {
 
@@ -19,11 +20,12 @@ const UserCard = ({user}) => {
 
   if (!user) return;
   return (
-    <div className="card bg-base-300 w-96 shadow-sm my-10 mx-2">
+    <div className="card bg-base-300 w-96 my-10 mx-2">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src={defaultProfilePhoto}
           alt="Profile Photo"
+          className="w-full h-64 object-cover"
         />
       </figure>
       <div className="card-body">

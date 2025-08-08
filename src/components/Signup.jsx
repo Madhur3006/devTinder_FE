@@ -17,6 +17,7 @@ const Signup = () => {
             firstName, lastName, emailId, password
         }, {withCredentials: true})
         setSuccessMsg("signed up successfully")
+        setPassword('')
         setTimeout(() => {
             setSuccessMsg('');
             navigate('/login')
@@ -62,7 +63,7 @@ const Signup = () => {
           </label>
           <label className="input my-2">
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => {
@@ -71,6 +72,12 @@ const Signup = () => {
             />
           </label>
           {successMsg && <p className="text-center text-green-500">{successMsg}</p>}
+          {password.length > 0 && <p className="text-left text-blue-500">
+              Password should contain 6 characters <br />
+              Password must contain one number and one alphabet <br />
+              Password must conatin a capital alphabet <br />
+              Password must contain special character
+            </p>}
           <div className="card-actions justify-center">
             <button
               className="btn btn-primary"

@@ -12,7 +12,6 @@ const Connections = () => {
         try {
             const res = await axios.get(BASE_URL+'/user/connections', {withCredentials: true})
             dispatch(addConnections(res?.data?.data))
-            console.log(res?.data?.data)
         } catch (error) {
             console.log(error)
         }
@@ -26,9 +25,9 @@ const Connections = () => {
     if(connections.length===0) return(<h1>No Connections! Keep Trying</h1>)
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center mb-2'>
         <h1 className='my-5 text-2xl text-base-content'>Connections</h1>
-        {connections.map((connection) => (<div key={connection._id}><ConnectionCard data={connection}/></div>))}
+        {connections.map((connection, index) => (<div key={index}><ConnectionCard data={connection}/></div>))}
     </div>
   )
 }
