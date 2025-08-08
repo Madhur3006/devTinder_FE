@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate, resolvePath } from "react-router-dom";
 import { createSocketConnection } from "../utills/socket";
@@ -12,11 +12,16 @@ const ChatBox = () => {
   const connections = useSelector((store) => store.connections);
   const user = useSelector((store) => store.user);
   const { toUserId } = useParams();
+  const messagesEndRef = useRef(null);
   const userInfo = connections.find(
     (connection) => connection._id === toUserId
   );
   const fromUserId = user?.info?._id;
   const firstName = user?.info?.firstName
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const fetchMessages = async () => {
     try {
@@ -42,6 +47,10 @@ const ChatBox = () => {
   }, [])
 
   useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
     const socket = createSocketConnection();
     socket.emit("joinChat", { fromUserId, toUserId });
     socket.on("messageReceived", ({ firstName, text }) => {
@@ -59,7 +68,7 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black-100 flex items-center justify-center p-4">
+    <div className="bg-black-100 flex items-center justify-center mt-4 p-4">
       <div className="bg-white rounded-lg shadow-lg flex flex-col w-full max-w-lg h-[600px]">
         <div className="bg-black p-4 text-white flex justify-between items-center rounded-t-lg">
           <span className="text-xl font-semibold">{userInfo?.firstName}</span>
@@ -81,6 +90,7 @@ const ChatBox = () => {
                   </div>
                 </div>
               ))}
+            <div ref={messagesEndRef} />
           </div>
         </div>
 

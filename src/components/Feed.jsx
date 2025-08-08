@@ -24,31 +24,30 @@ const Feed = () => {
     getFeed();
   }, []);
 
- 
-
   if (!feed) return;
-  if (feed.length === 0)
+  if (!feed.data || feed.data.length === 0) {
     return (
-      <h1 className="flex justify-center my-5">You have explored all user</h1>
+      <h1 className="flex justify-center align-middle my-5 text-base-content">You have explored all user</h1>
     );
+  }
 
   return (
     <>
-    <div className="flex items-center justify-center mt-15">
-      <div className="carousel carousel-center bg-base-300 rounded-box max-w-md space-x-6 p-4">
-        {feed.data &&
-          feed.data.map((data) => {
-            return (
-              <div className="carousel-item">
-                <UserCard user={data}/>
-              </div>
-            );
-          })}
+      <div className="flex items-center justify-center mt-15">
+        <div className="carousel carousel-center bg-base-300 rounded-box max-w-md space-x-6 p-4">
+          {feed.data &&
+            feed.data.map((data, index) => {
+              return (
+                <div className="carousel-item" key={index}>
+                  <UserCard user={data}/>
+                </div>
+              );
+            })}
+        </div>
       </div>
-    </div>
-    <div className="flex items-center justify-center mt-4">
-      <p> Slide to new User</p>
-    </div>
+      <div className="flex items-center justify-center mt-4">
+        <p> Slide to new User</p>
+      </div>
     </>
   );
 };
